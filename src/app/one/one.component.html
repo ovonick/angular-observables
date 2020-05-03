@@ -1,0 +1,8 @@
+<div class="content one">
+  <ng-content></ng-content>
+  <p>window height: {{height}}</p>
+  <p>mouse location: x: {{mousePoint?.x}} y: {{mousePoint?.y}}</p>
+  <ul>
+    <li *ngFor='let generatedNumber of numbers'>{{generatedNumber}}</li>
+  </ul>
+</div>

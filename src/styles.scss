@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+.content {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 0px 5px;
+  margin: 5px 0px;
+  height: 200px;
+  overflow: auto;
+}
+.one {
+  background-color: lightblue;
+}
+
+.two {
+  background-color: lightgray;
+}
+
+.three {
+  background-color: lightyellow;
+}
