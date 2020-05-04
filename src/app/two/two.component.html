@@ -4,6 +4,7 @@
   <div *ngIf="(mousePoint$ | async) as mousePoint">
     <p>mouse location: x: {{mousePoint.x}}</p>
     <p>mouse location: y: {{mousePoint.y}}</p>
+    <p>now is: {{mousePoint.asOfDate}}</p>
   </div>
-  <p>generated number: {{eventService.numberGenerator$ | async}}</p>
+  <p>generated number: {{myNumbers$ | async}}</p>
 </div>

@@ -5,9 +5,11 @@ import { fromEvent, Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class EventService {
-  @Output() windowResize$:    Observable<any>;
-  @Output() mouseMove$:       Observable<MouseEvent>;
-  @Output() numberGenerator$: Subject<number>;
+  /*@Output()*/ public  windowResize$:    Observable<any>;
+  /*@Output()*/ public  mouseMove$:       Observable<MouseEvent>;
+  /*@Output()*/ private numberGenerator$: Subject<number>;
+
+  public readonly sequentialNumberGenerator$: Observable<number>;
 
   private nextSequenceNumber: number = 1;
 
@@ -15,6 +17,7 @@ export class EventService {
     this.windowResize$    = fromEvent(window, "resize");
     this.mouseMove$       = fromEvent<MouseEvent>(window, "mousemove");
     this.numberGenerator$ = new Subject();
+    this.sequentialNumberGenerator$ = this.numberGenerator$.asObservable();
   }
 
   public generateNextSequentialNumber(): void {
@@ -24,5 +27,9 @@ export class EventService {
 }
 
 export class Point {
-  constructor(public x: number, public y: number) {}
+  public asOfDate: Date;
+
+  constructor(public x: number, public y: number) {
+    this.asOfDate = new Date();
+  }
 }

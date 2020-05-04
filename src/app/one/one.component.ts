@@ -19,13 +19,17 @@ export class OneComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = new Subscription();
-    this.subscription.add(this.eventService.windowResize$.   subscribe(windowResizeEvent => this.height     = windowResizeEvent.target.innerHeight));
-    this.subscription.add(this.eventService.mouseMove$.      subscribe(mouseMoveEvent    => this.mousePoint = new Point(mouseMoveEvent.screenX, mouseMoveEvent.screenY)));
-    this.subscription.add(this.eventService.numberGenerator$.subscribe(generatedNumber   => this.numbers.push(generatedNumber)));
+    this.subscription.add(this.eventService.windowResize$.             subscribe(windowResizeEvent => this.height     = windowResizeEvent.target.innerHeight));
+    this.subscription.add(this.eventService.mouseMove$.                subscribe(mouseMoveEvent    => this.mousePoint = new Point(mouseMoveEvent.screenX, mouseMoveEvent.screenY)));
+    this.subscription.add(this.eventService.sequentialNumberGenerator$.subscribe(generatedNumber   => this.numbers.push(generatedNumber)));
   }
 
   ngOnDestroy(): void {
-    console.log("unsubscribing");
+    console.log("unsubsribing");
     this.subscription.unsubscribe();
+  }
+
+  public onClick(): void{
+    this.eventService.generateNextSequentialNumber();
   }
 }
